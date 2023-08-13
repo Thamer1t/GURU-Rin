@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 let handler = async (m, { text, usedPrefix, command }) => {
   
   if (!text && !(m.quoted && m.quoted.text)) {
-    throw `Please provide some text or quote a message to get a response.`;
+    throw `عطني كلام او رد على رسالة!`;
   }
 
  
@@ -22,7 +22,7 @@ let handler = async (m, { text, usedPrefix, command }) => {
   }
 };
 
-handler.command = ['bro', 'chatgpt', 'ai', 'siri'];
+handler.command = ['رين', 'gpt', 'ai', 'ذكاء'];
 handler.diamond = false;
 
 export default handler;
