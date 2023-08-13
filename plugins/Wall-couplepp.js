@@ -1,4 +1,4 @@
-import fetch from "node-fetch"
+/*import fetch from "node-fetch"
 let handler = async (m, { conn }) => {
 
   let data = await (await fetch('https://raw.githubusercontent.com/KazukoGans/database/main/anime/ppcouple.json')).json()
@@ -15,3 +15,4 @@ handler.command = ['couplepp','ppcouple']
 
 
 export default handler
+*/
