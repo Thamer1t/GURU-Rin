@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+/*import fetch from 'node-fetch';
 import translate from '@vitalets/google-translate-api';
 
 let quranSurahHandler = async (m, { conn }) => {
@@ -58,7 +58,7 @@ quranSurahHandler.help = ['سورة [surah_number|surah_name]'];
 quranSurahHandler.tags = ['القران', 'سورة'];
 quranSurahHandler.command = ['سورة', 'surah']
 
-export default quranSurahHandler;
+export default quranSurahHandler;*/
 
   
   
