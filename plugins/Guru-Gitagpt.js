@@ -1,4 +1,4 @@
-import fetch from 'node-fetch'
+/*import fetch from 'node-fetch'
 
 let gitagptHandler = async (m, { text, usedPrefix, command }) => {
   if (!text && !(m.quoted && m.quoted.text)) {
@@ -24,3 +24,4 @@ gitagptHandler.command = ['gitagpt']
 gitagptHandler.diamond = false
 
 export default gitagptHandler
+*/
