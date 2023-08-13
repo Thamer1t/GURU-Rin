@@ -10,7 +10,7 @@ let handler = async (m, { conn, text }) => {
 
   // If no key and text provided, show all styles of a default text
   if (words.length === 0 || !key || !textToStyle) {
-    let defaultText = 'GURU BOT';
+    let defaultText = 'Rin';
     let styledTexts = await Promise.all([...Array(34).keys()].map(i => stylizeText(defaultText, i + 1)));
     conn.reply(m.chat, styledTexts.join`\n\n`, m);
     return;
@@ -18,7 +18,7 @@ let handler = async (m, { conn, text }) => {
 
   // Check if the key is a number between 1 and 34
   if (!Number.isInteger(+key) || +key < 1 || +key > 34) {
-    throw 'Invalid key. Please provide a number between 1 and 34.';
+    throw 'خطأ، عطني رقم من 1 إلى 34.';
   }
 
   // Get the styled text
@@ -28,8 +28,8 @@ let handler = async (m, { conn, text }) => {
 }
 
 handler.help = ['style'].map(v => v + ' <key> <text>');
-handler.tags = ['tools'];
-handler.command = /^(fancy)$/i;
+handler.tags = ['ادوات'];
+handler.command = /^(زخرفة)$/i;
 handler.exp = 0;
 
 export default handler;
