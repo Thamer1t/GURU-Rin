@@ -1,4 +1,4 @@
-
+/*
 import fetch from 'node-fetch'
 
 let handler = m => m
@@ -18,3 +18,4 @@ handler.all = async function (m) {
 
 } 
 export default handler
+*/
