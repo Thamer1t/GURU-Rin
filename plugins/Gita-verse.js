@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+/*import fetch from 'node-fetch';
 
 let gitaVerseHandler = async (m, { conn }) => {
   try {
@@ -48,3 +48,4 @@ gitaVerseHandler.command = ['gita', 'verse']
 
 export default gitaVerseHandler;
 
+*/
