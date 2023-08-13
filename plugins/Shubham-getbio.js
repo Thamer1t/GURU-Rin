@@ -1,4 +1,4 @@
-let handler = async (m, { conn, text, command }) => {
+/*let handler = async (m, { conn, text, command }) => {
   try {
     let who
     if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted.sender
@@ -21,3 +21,4 @@ handler.tags = ['group']
 handler.command = /^(getb?io)$/i
 handler.limit = true
 export default handler
+*/
