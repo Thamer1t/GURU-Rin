@@ -1,4 +1,4 @@
-import axios from 'axios'
+/*import axios from 'axios'
 let handler = async(m, { conn, usedPrefix, command }) => {
 let res = (await axios.get(`https://raw.githubusercontent.com/Guru322/api/Guru/BOT-JSON/Messi.json`)).data  
 let url = await res[Math.floor(res.length * Math.random())]
@@ -8,3 +8,4 @@ handler.help = ['messi']
 handler.tags = ['internet']
 handler.command = /^(messi)$/i
 export default handler
+*/
