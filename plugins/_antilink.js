@@ -1,4 +1,4 @@
-
+/*
 const linkRegex = /chat.whatsapp.com\/(?:invite\/)?([0-9A-Za-z]{20,24})/i
 
 export async function before(m, {conn, isAdmin, isBotAdmin }) {
@@ -25,3 +25,4 @@ I'm sorry *@${m.sender.split('@')[0]}*  you will be kicked out of the group ${is
     }
     return !0
 }
+*/
