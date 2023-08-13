@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+/*import fetch from 'node-fetch';
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
   if (!text) throw `*This command generates image from texts*\n\n*𝙴xample usage*\n*◉ ${usedPrefix + command} Beautiful animegirl*\n*◉ ${usedPrefix + command} elon musk in pink output*`;
@@ -25,7 +25,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   } catch {
     throw '*Oops! Something went wrong while generating images. Please try again later.*';
   }
-};
+};*/
 
 handler.command = ['ai2', 'dalle', 'gen', 'gimg', 'openai2'];
 export default handler;
