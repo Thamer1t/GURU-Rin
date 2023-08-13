@@ -1,4 +1,4 @@
-
+/*
 export async function all(m) {
     if (!m.isGroup)
         return
@@ -11,3 +11,4 @@ export async function all(m) {
         chats.expired = null
     }
 }
+*/
