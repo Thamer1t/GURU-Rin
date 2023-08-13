@@ -1,4 +1,4 @@
-let handler = async (m, { conn, text, usedPrefix, command, args }) => {
+/*let handler = async (m, { conn, text, usedPrefix, command, args }) => {
     if (!global.db.data.chats[m.chat].nsfw) throw `🚫 group doesnt supprt nsfw \n\n enable it by \n*${usedPrefix}enable* nsfw`
     let user = global.db.data.users[m.sender].age
     if (user < 17) throw m.reply(`❎ uneed to be atleast 18 years`)
@@ -17,4 +17,4 @@ let handler = async (m, { conn, text, usedPrefix, command, args }) => {
     throw `*ERROR NOT FOUND TRY SEARCHING ANOTHER QUERY*`
     }}
     handler.command = /^(hentai)$/i
-    export default handler
+    export default handler*/
