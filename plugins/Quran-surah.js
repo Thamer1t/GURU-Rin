@@ -7,7 +7,7 @@ let quranSurahHandler = async (m, { conn }) => {
     let surahInput = m.text.split(' ')[1];
 
     if (!surahInput) {
-      throw new Error(`Please specify the surah number or name`);
+      throw new Error(`زودني برقم السورة او اسمها `);
     }
 
     let surahListRes = await fetch('https://quran-endpoint.vercel.app/quran');
@@ -20,14 +20,14 @@ let quranSurahHandler = async (m, { conn }) => {
     );
 
     if (!surahData) {
-      throw new Error(`Couldn't find surah with number or name "${surahInput}"`);
+      throw new Error(`اسف، ماحصلت: "${surahInput}"`);
     }
 
     let res = await fetch(`https://quran-endpoint.vercel.app/quran/${surahData.number}`);
     
     if (!res.ok) {
       let error = await res.json(); 
-      throw new Error(`API request failed with status ${res.status} and message ${error.message}`);
+      throw new Error(`خطأ بالAPI ${res.status} رسالة الخطأ ${error.message}`);
     }
 
     let json = await res.json();
@@ -39,14 +39,9 @@ let quranSurahHandler = async (m, { conn }) => {
     let translatedTafsirEnglish = await translate(json.data.tafsir.id, { to: 'en', autoCorrect: true });
 
     let quranSurah = `
-🕌 *Quran: The Holy Book*\n
-📜 *Surah ${json.data.number}: ${json.data.asma.ar.long} (${json.data.asma.en.long})*\n
-Type: ${json.data.type.en}\n
-Number of verses: ${json.data.ayahCount}\n
-🔮 *Explanation (Urdu):*\n
-${translatedTafsirUrdu.text}\n
-🔮 *Explanation (English):*\n
-${translatedTafsirEnglish.text}`;
+🕌 *القرآن الكريم*\n
+📜 *السورة ${json.data.number}: ${json.data.asma.ar.long} (${json.data.asma.en.long})*\n
+عدد الآيات: ${json.data.ayahCount}\n
 
     m.reply(quranSurah);
 
@@ -55,13 +50,13 @@ ${translatedTafsirEnglish.text}`;
     }
   } catch (error) {
     console.error(error);
-    m.reply(`Error: ${error.message}`);
+    m.reply(`خطأ: ${error.message}`);
   }
 };
 
-quranSurahHandler.help = ['quran [surah_number|surah_name]'];
-quranSurahHandler.tags = ['quran', 'surah'];
-quranSurahHandler.command = ['quran', 'surah']
+quranSurahHandler.help = ['سورة [surah_number|surah_name]'];
+quranSurahHandler.tags = ['القران', 'سورة'];
+quranSurahHandler.command = ['سورة', 'surah']
 
 export default quranSurahHandler;
 
