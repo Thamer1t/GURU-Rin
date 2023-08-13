@@ -1,4 +1,4 @@
-import axios from "axios"
+/*import axios from "axios"
 let handler = async (m, { args }) => {
 if (!args[0]) throw "*Give a place to search*"
 try {
@@ -20,3 +20,4 @@ handler.help = ['climate *<place>*']
 handler.tags = ['herramientas']
 handler.command = /^(climate|weather)$/i
 export default handler
+*/
