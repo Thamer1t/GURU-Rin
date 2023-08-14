@@ -65,9 +65,9 @@ let handler = async (m, { command, args, usedPrefix }) => {
     let user = global.db.data.users[m.sender]
     let listCrate = Object.fromEntries(Object.entries(rewards).filter(([v]) => v && v in user))
     let info = `
-Use Format *${usedPrefix}${command} [crate] [count]*
-Usage example: *${usedPrefix}${command} common 10*
-📍Crate list: 
+استخدم *${usedPrefix}${command} [الصندوق] [العدد]*
+مثال: *${usedPrefix}${command} شائع 10*
+📍قائمة الصناديق: 
 ${Object.keys(listCrate).map((v) => `
 ${rpg.emoticon(v)}${v}
 `.trim()).join('\n')}
@@ -76,8 +76,8 @@ ${rpg.emoticon(v)}${v}
     let count = Math.floor(isNumber(args[1]) ? Math.min(Math.max(parseInt(args[1]), 1), Number.MAX_SAFE_INTEGER) : 1) * 1
     if (!(type in listCrate)) return m.reply(info)
     if (user[type] < count) return m.reply(`
-Your *${rpg.emoticon(type)}${type} crate* is not enough!, you only have ${user[type]} *${rpg.emoticon(type)}${type} crate*
-type *${usedPrefix}buy ${type} ${count - user[type]}* to buy
+الصناديق *${rpg.emoticon(type)}${type} * ليست كافية!, ليس لديك سوى ${user[type]} *${rpg.emoticon(type)}${type} *
+اكتب *${usedPrefix}شراء ${type} ${count - user[type]}* للشراء
 `.trim())
     // TODO: add pet crate
     // if (type !== 'pet')
@@ -93,22 +93,22 @@ type *${usedPrefix}buy ${type} ${count - user[type]}* to buy
             }
     user[type] -= count * 1
     m.reply(`
-You have opened *${count}* ${global.rpg.emoticon(type)}${type} crate and got:
-${Object.keys(crateReward).filter(v => v && crateReward[v] && !/legendary|pet|mythic|diamond|emerald/i.test(v)).map(reward => `
+فتحت *${count}* ${global.rpg.emoticon(type)}${type} صندوق وحصلت على:
+${Object.keys(crateReward).filter(v => v && crateReward[v] && !/اسطوري|حيوان|غامض|ألماس|زمرد/i.test(v)).map(reward => `
 *${global.rpg.emoticon(reward)}${reward}:* ${crateReward[reward]}
 `.trim()).join('\n')}
 `.trim())
     let diamond = crateReward.diamond, mythic = crateReward.mythic, pet = crateReward.pet, legendary = crateReward.legendary, emerald = crateReward.emerald
     if (mythic || diamond) m.reply(`
-Congrats you got a rare item, which is ${diamond ? `*${diamond}* ${rpg.emoticon('diamond')}diamond` : ''}${diamond && mythic ? 'and ' : ''}${mythic ? `*${mythic}* ${rpg.emoticon('mythic')}mythic` : ''}
+لقد حصلت على عنصر نادر, ${diamond ? `*${diamond}* ${rpg.emoticon('diamond')}ألماس` : ''}${diamond && mythic ? 'و ' : ''}${mythic ? `*${mythic}* ${rpg.emoticon('mythic')}غامض` : ''}
 `.trim())
     if (pet || legendary || emerald) m.reply(`
-Congrats you got a epic item, which is ${pet ? `*${pet}* ${rpg.emoticon('pet')}pet` : ''}${pet && legendary && emerald ? ', ' : (pet && legendary || legendary && emerald || emerald && pet) ? 'and ' : ''}${legendary ? `*${legendary}* ${rpg.emoticon('legendary')}legendary` : ''}${pet && legendary && emerald ? 'and ' : ''}${emerald ? `*${emerald}* ${rpg.emoticon('emerald')}emerald` : ''}
+حصلت على عنصر ملحمي,  ${pet ? `*${pet}* ${rpg.emoticon('pet')}حيوان أليف` : ''}${pet && legendary && emerald ? ', ' : (pet && legendary || legendary && emerald || emerald && pet) ? 'و ' : ''}${legendary ? `*${legendary}* ${rpg.emoticon('legendary')}اسطوري` : ''}${pet && legendary && emerald ? 'و ' : ''}${emerald ? `*${emerald}* ${rpg.emoticon('emerald')}زمرد` : ''}
 `.trim())
 }
 handler.help = ['open', 'gacha'].map(v => v + ' [crate] [count]')
-handler.tags = ['econ']
-handler.command = /^(open|buka|gacha)$/i
+handler.tags = ['اقتصاد']
+handler.command = /^(افتح|buka|gacha)$/i
 
 export default handler
 
