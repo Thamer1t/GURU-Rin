@@ -1,4 +1,4 @@
-import { toPTT } from '../lib/converter.js'
+/*import { toPTT } from '../lib/converter.js'
 
 let handler = async (m, { conn, usedPrefix, command }) => {
     let q = m.quoted ? m.quoted : m
@@ -16,3 +16,4 @@ handler.tags = ['fun']
 handler.command = ['toav', 'tovn'] 
 
 export default handler
+*/
