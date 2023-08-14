@@ -17,15 +17,15 @@ let handler = async (m) => {
     }
     //conn.sendButton(m.chat,'*––––––『 MONTHLY 』––––––*', text.trim(), null, [['Inventory', '.inv'], ['Menu', '.menu']],m)
     m.reply(`
-    🎁 *monthly reward*
+    🎁 *الجائزة الشهرية*
     
-    ▢ *Has recieved:*
+    ▢ *استلمت:*
      ${text}`)
     user.lastmonthly = new Date * 1
 }
 handler.help = ['monthly']
-handler.tags = ['rpg']
-handler.command = /^(monthly)$/i
+handler.tags = ['اقتصاد']
+handler.command = /^(شهري)$/i
 
 handler.cooldown = cooldown
 
