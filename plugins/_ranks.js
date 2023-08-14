@@ -15,22 +15,22 @@ global.rpg = {
     if (isNaN(level)) return { name: '', level: '' }
     // this code make config.js to be a more understandable code
     const role = [
-      { name: 'Warrior V', level: 0 }, { name: 'Warrior IV', level: 4 }, { name: 'Warrior III', level: 8 }, { name: 'Warrior II', level: 12 }, { name: 'Warrior I', level: 16 },
-      { name: 'Paladin V', level: 20 }, { name: 'Paladin IV', level: 24 }, { name: 'Paladin III', level: 28 }, { name: 'Paladin II', level: 32 }, { name: 'Paladin I', level: 36 },
-      { name: 'Sorcerer V', level: 40 }, { name: 'Sorcerer IV', level: 44 }, { name: 'Sorcerer III', level: 48 }, { name: 'Sorcerer II', level: 52 }, { name: 'Sorcerer I', level: 56 },
-      { name: 'Ranger V', level: 60 }, { name: 'Ranger IV', level: 64 }, { name: 'Ranger III', level: 68 }, { name: 'Ranger II', level: 72 }, { name: 'Ranger I', level: 76 },
-      { name: 'Mage V', level: 80 }, { name: 'Mage IV', level: 84 }, { name: 'Mage III', level: 88 }, { name: 'Mage II', level: 92 }, { name: 'Mage I', level: 96 },
-      { name: 'Cleric V', level: 100 }, { name: 'Cleric IV', level: 104 }, { name: 'Cleric III', level: 108 }, { name: 'Cleric II', level: 112 }, { name: 'Cleric I', level: 116 },
-      { name: 'Thief V', level: 120 }, { name: 'Thief IV', level: 124 }, { name: 'Thief III', level: 128 }, { name: 'Thief II', level: 132 }, { name: 'Thief I', level: 136 },
-      { name: 'Assassin V', level: 140 }, { name: 'Assassin IV', level: 144 }, { name: 'Assassin III', level: 148 }, { name: 'Assassin II', level: 152 }, { name: 'Assassin I', level: 156 },
-      { name: 'Monk V', level: 160 }, { name: 'Monk IV', level: 164 }, { name: 'Monk III', level: 168 }, { name: 'Monk II', level: 172 }, { name: 'Monk I', level: 176 },
-      { name: 'Bard V', level: 180 }, { name: 'Bard IV', level: 184 }, { name: 'Bard III', level: 188 }, { name: 'Bard II', level: 192 }, { name: 'Bard I', level: 196 },
-      { name: 'Necromancer V', level: 200 }, { name: 'Necromancer IV', level: 204 }, { name: 'Necromancer III', level: 208 }, { name: 'Necromancer II', level: 212 }, { name: 'Necromancer I', level: 216 },
-      { name: 'Warlock V', level: 220 }, { name: 'Warlock IV', level: 224 }, { name: 'Warlock III', level: 228 }, { name: 'Warlock II', level: 232 }, { name: 'Warlock I', level: 236 },
-      { name: 'Wizard V', level: 240 }, { name: 'Wizard IV', level: 244 }, { name: 'Wizard III', level: 248 }, { name: 'Wizard II', level: 252 }, { name: 'Wizard I', level: 256 },
-      { name: 'Sage V', level: 260 }, { name: 'Sage IV', level: 264 }, { name: 'Sage III', level: 268 }, { name: 'Sage II', level: 272 }, { name: 'Sage I', level: 276 },
-      { name: 'Priest V', level: 280 }, { name: 'Priest IV', level: 284 }, { name: 'Priest III', level: 288 }, { name: 'Priest II', level: 292 }, { name: 'Priest I', level: 296 },
-      { name: 'Rogue V', level: 300 }, { name: 'Rogue IV', level: 304 }, { name: 'Rogue III', level: 308 }, { name: 'Rogue II', level: 312 }, { name: 'Rogue I', level: 316 },
+      { name: ' مبتدئ', level: 0 }, { name: 'محارب', level: 4 }, { name: 'محارب مخضرم', level: 8 }, { name: 'تشونين', level: 12 }, { name: 'غينين', level: 16 },
+      { name: 'شينوبي', level: 20 }, { name: 'اوزوماكي', level: 24 }, { name: 'اوتشيها', level: 28 }, { name: 'اوتسوتسكي', level: 32 }, { name: 'صياد', level: 36 },
+      { name: 'ساحر', level: 40 }, { name: 'قائد فرقة', level: 44 }, { name: 'امبراطور السحر', level: 48 }, { name: 'شيطان', level: 52 }, { name: 'جينتشوريكي', level: 56 },
+      { name: 'سانين', level: 60 }, { name: 'كاغي', level: 64 }, { name: 'قرصان', level: 68 }, { name: 'صائد قراصنة', level: 72 }, { name: 'جندي بحرية', level: 76 },
+      { name: 'قبطان', level: 80 }, { name: 'نائب ادميرال', level: 84 }, { name: 'ادميرال', level: 88 }, { name: 'تشيبوكاي', level: 92 }, { name: 'سوبرنوفا', level: 96 },
+      { name: 'محقق روحي', level: 100 }, { name: 'بديل شينيغامي', level: 104 }, { name: 'شينيغامي', level: 108 }, { name: 'هولو', level: 112 }, { name: 'فولبرينقر', level: 116 },
+      { name: 'نائب قائد فريق', level: 120 }, { name: 'قائد فريق', level: 124 }, { name: 'القائد الأعلى', level: 128 }, { name: 'خيميائي', level: 132 }, { name: 'فاستولورد', level: 136 },
+      { name: 'اسبادا', level: 140 }, { name: 'ساموراي', level: 144 }, { name: 'صائد شياطين', level: 148 }, { name: 'وريث هاشيرا', level: 152 }, { name: 'قمر ادنى', level: 156 },
+      { name: 'هاشيرا', level: 160 }, { name: 'قمر أعلى', level: 164 }, { name: 'قاتل تنانين', level: 168 }, { name: 'شيطان تارتاروس', level: 172 }, { name: 'E.N.D', level: 176 },
+      { name: 'تنين', level: 180 }, { name: 'ملك التنانين', level: 184 }, { name: 'فارس مقدس', level: 188 }, { name: 'خطيئة', level: 192 }, { name: 'وصية', level: 196 },
+      { name: 'فالكري', level: 200 }, { name: 'سايان', level: 204 }, { name: 'سوبر سايان', level: 208 }, { name: 'مساعد حاكم الدمار', level: 212 }, { name: 'حاكم الدمار', level: 216 },
+      { name: 'قاتل مأجور', level: 220 }, { name: 'سيد الحرب', level: 224 }, { name: 'يونكو', level: 228 }, { name: 'ثائر', level: 232 }, { name: 'نائب قائد جيش الثوار', level: 236 },
+      { name: 'قائد جيش الثوار', level: 240 }, { name: 'ريودان', level: 244 }, { name: 'غوروسي', level: 248 }, { name: 'الجوي بوي', level: 252 }, { name: 'ملك القراصنة', level: 256 },
+      { name: 'جنرال', level: 260 }, { name: 'قائد جمعية الصيادين', level: 264 }, { name: 'الفارس الاسود', level: 268 }, { name: 'ويتشر', level: 272 }, { name: 'باراثيون', level: 276 },
+      { name: 'لانيستر', level: 280 }, { name: 'تارغيريان', level: 284 }, { name: 'ستارك', level: 288 }, { name: 'نايت ووكر', level: 292 }, { name: 'النايت كينق', level: 296 },
+      { name: 'ملك الشمال', level: 300 }, { name: 'حامي الممالك السبع', level: 304 }, { name: 'منقطع النظير',/* level: 308 }, { name: 'Rogue II', level: 312 }, { name: 'Rogue I', level: 316 },
       { name: 'Brawler V', level: 320 }, { name: 'Brawler IV', level: 324 }, { name: 'Brawler III', level: 328 }, { name: 'Brawler II', level: 332 }, { name: 'Brawler I', level: 336 },
       { name: 'Archer V', level: 340 }, { name: 'Archer IV', level: 344 }, { name: 'Archer III', level: 348 }, { name: 'Archer II', level: 352 }, { name: 'Archer I', level: 356 },
       { name: 'Sniper V', level: 360 }, { name: 'Sniper IV', level: 364 }, { name: 'Sniper III', level: 368 }, { name: 'Sniper II', level: 372 }, { name: 'Sniper I', level: 376 },
@@ -68,7 +68,7 @@ global.rpg = {
       { name: 'Titan V', level: 1000 }, { name: 'Titan IV', level: 1004 }, { name: 'Titan III', level: 1008 }, { name: 'Titan II', level: 1012 }, { name: 'Titan I', level: 1016 },
       { name: 'Uranus V', level: 1020 }, { name: 'Uranus IV', level: 1024 }, { name: 'Uranus III', level: 1028 }, { name: 'Uranus II', level: 1032 }, { name: 'Uranus I', level: 1036 },
       { name: 'Venus V', level: 1040 }, { name: 'Venus IV', level: 1044 }, { name: 'Venus III', level: 1048 }, { name: 'Venus II', level: 1052 }, { name: 'Venus I', level: 1056 },
-      { name: 'Zeus V', level: 1060 }, { name: 'Zeus IV', level: 1064 }, { name: 'Zeus III', level: 1068 }, { name: 'Zeus II', level: 1072 }, { name: 'Zeus I', level: 1076 },
+      { name: 'Zeus V', level: 1060 }, { name: 'Zeus IV', level: 1064 }, { name: 'Zeus III', level: 1068 }, { name: 'Zeus II', level: 1072 }, { name: 'Zeus I', level: 1076 },*/
     ]
 
     return role.reverse().find(role => level >= role.level)
