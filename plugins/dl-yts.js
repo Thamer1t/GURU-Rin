@@ -1,4 +1,4 @@
-
+/*
 import yts from 'yt-search'
 
 let handler = async (m, {conn, text }) => {
@@ -28,4 +28,4 @@ handler.help = ['ytsearch']
 handler.tags = ['dl']
 handler.command = ['ytsearch', 'yts'] 
 
-export default handler
+export default handler*/
