@@ -9,14 +9,14 @@ let handler = async (m, { conn }) => {
     if (!canLevelUp(user.level, user.exp, global.multiplier)) {
         let { min, xp, max } = xpRange(user.level, global.multiplier);
         let txt = `
-┌───⊷ *LEVEL*
-▢ Number : *${name}*
-▢ Level : *${user.level}*
-▢ XP : *${user.exp - min}/${xp}*
-▢ Role : *${user.role}*
+┌───⊷ *المستوى*
+▢ اليوزر : *${name}*
+▢ المستوى : *${user.level}*
+▢ نقاط الخبرة : *${user.exp - min}/${xp}*
+▢ الدور : *${user.role}*
 └──────────────
 
-Hey there, ${name}! You're not ready to level up just yet. It seems like you need to munch up *${max - user.exp}* more XP to level up and reach new heights! Keep going, and the bots will be singing your praises soon! 🚀
+مرحبا, ${name}! عشان توصل للمستوى اللي بعده تحتاج*${max - user.exp}* نقطة خبرة، شد حيلك! 🚀
 `.trim();
 
         try {
@@ -27,14 +27,13 @@ Hey there, ${name}! You're not ready to level up just yet. It seems like you nee
         }
     } else {
         let str = `
-┌─⊷ *LEVEL UP*
-▢ Previous level : *${user.level - 1}*
-▢ Current level : *${user.level}*
-▢ Role : *${user.role}*
+┌─⊷ *ازداد المستوى*
+▢ المستوى السابق : *${user.level - 1}*
+▢ المستوى الحالي : *${user.level}*
+▢ الدور : *${user.role}*
 └──────────────
 
-Woo-hoo, ${name}! You've soared to new heights and reached level ${user.level}! 🎉 Time to celebrate! 🎊
-Your newfound power will strike fear into the hearts of trolls, and the bots will bow before your command! Keep up the incredible work, and who knows what epic adventures await you next! 🌟
+مبرووك${name}!مستواك الان{user.level}! 🎉 نتطلع لإرتقائك القادم 🎊
 `.trim();
 
         try {
@@ -48,6 +47,6 @@ Your newfound power will strike fear into the hearts of trolls, and the bots wil
 
 handler.help = ['levelup'];
 handler.tags = ['econ'];
-handler.command = ['nivel', 'lvl', 'levelup', 'level'];
+handler.command = ['رانك', 'lvl', 'المستوى', 'level'];
 
 export default handler
