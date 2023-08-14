@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+/*import fetch from 'node-fetch';
 
 const handler = async (m, { conn }) => {
   try {
@@ -20,5 +20,5 @@ handler.command = /^(animequote)$/i;
 
 export default handler;
 
-
+*/
 
