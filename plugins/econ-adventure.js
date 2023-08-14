@@ -27,7 +27,7 @@ let handler = async (m, { usedPrefix }) => {
     user.lastadventure = new Date * 1
 }
 handler.help = ['adventure', 'petualang', 'berpetualang', 'mulung']
-handler.tags = ['ترفيه']
+handler.tags = ['ار بي جي']
 handler.command = /^(مغامرة|(ber)?petualang(ang)?|mulung)$/i
 
 handler.cooldown = cooldown
