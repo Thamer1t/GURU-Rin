@@ -1,4 +1,4 @@
-import { download } from 'aptoide-scraper';
+/*import { download } from 'aptoide-scraper';
 
 let handler = async (m, { conn, usedPrefix: prefix, command, text }) => {
   try {
@@ -29,3 +29,4 @@ let handler = async (m, { conn, usedPrefix: prefix, command, text }) => {
 
 handler.command = /^apk$/i;
 export default handler;
+*/
