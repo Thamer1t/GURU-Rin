@@ -1,4 +1,4 @@
-
+/*
 import fg from 'api-dylux' 
 let handler = async (m, { conn, args, usedPrefix, command }) => {
 
@@ -26,3 +26,4 @@ handler.diamond = true
 handler.premium = true
 
 export default handler
+*/
