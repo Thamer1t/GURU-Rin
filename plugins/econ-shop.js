@@ -1,6 +1,6 @@
 //import db from '../lib/database.js'
 const items = {
-    buy: {
+    شراء: {
         ألماس: {
             exp: 350
         },
@@ -23,7 +23,7 @@ const items = {
         	money: 3000
         }
     },
-    sell: {
+    بيع: {
         جرعة: {
             money: 125,
         },
