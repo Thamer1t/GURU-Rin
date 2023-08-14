@@ -20,8 +20,8 @@ let handler = async (m, { text, usedPrefix, command }) => {
 
 
 handler.help = ['cmd'].map(v => 'set' + v + ' <txt>')
-handler.tags = ['cmd']
-handler.command = ['setcmd']
+handler.tags = ['للمالك']
+handler.command = ['ضبط-امر']
 handler.owner = true
 
 export default handler
