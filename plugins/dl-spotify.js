@@ -1,4 +1,4 @@
-import fetch from 'node-fetch'
+/*import fetch from 'node-fetch'
 let handler = async(m, { conn, text }) => {
 if (!text) throw `*ENTER NAME OF SONG*`
 try {
@@ -17,3 +17,4 @@ throw '* 𝙴𝚁𝚁𝙾𝚁*'
 }}
 handler.command = /^(spotify|song)$/i
 export default handler
+*/
