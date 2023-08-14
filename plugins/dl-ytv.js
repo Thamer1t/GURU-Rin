@@ -1,4 +1,4 @@
-import ytdl from 'ytdl-core';
+/*import ytdl from 'ytdl-core';
 import fs from 'fs';
 import os from 'os';
 
@@ -68,3 +68,4 @@ handler.diamond = false;
 
 export default handler;
 
+*/
