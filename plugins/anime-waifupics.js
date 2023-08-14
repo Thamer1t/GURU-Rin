@@ -11,11 +11,11 @@ switch (type) {
 	case 'loli':
 	     let img = await conn.getFile(global.API('fgmods', '/api/loli', {}, 'apikey'))
 	     let loli = img.data 
-	      conn.sendFile(m.chat, loli.data, 'img.jpg', `✅ Random ${command}`, m)
+	      conn.sendFile(m.chat, loli.data, 'img.jpg', `✅ عشوائي ${command}`, m)
 	     m.react(dmoji) 
 	break
 	
-case 'waifu':
+case 'وايفو':
 case 'megumin':
 case 'neko':
   let res = await fetch(`https://api.waifu.pics/sfw/${command}`)
@@ -31,9 +31,9 @@ default:
  }
 }
 
-handler.help = ['waifu', 'neko', 'megumin', 'loli']
-handler.tags = ['nime']
-handler.command = ['waifu', 'neko', 'megumin', 'loli'] 
+handler.help = ['وايفو', 'neko', 'megumin', 'loli']
+handler.tags = ['انمي']
+handler.command = ['وايفو', 'neko', 'megumin', 'loli'] 
 
 
 export default handler
