@@ -10,103 +10,103 @@ let handler  = async (m, { conn, command, args, usedPrefix, DevMode }) => {
 
 let lgocraft = `
 █▀▀▀▀█▀▀▀█▀▀▀▀█
-  ᴄʀᴀꜰᴛ ᴛᴀʙʟᴇ
+  طاولة الصناعة
 █▄▄▄▄█▄▄▄█▄▄▄▄█`
 
   let caption = `
-▧ Pickaxe ⛏️
+▧ معول ⛏️
+▧ سيف ⚔️
+▧ سنارة 🎣
+*❏ الوصفة*
+▧ معول ⛏️
+〉 10 خشب
+〉 5 حجر
+〉 5 حديد
+〉 20 خيط
 ▧ Sword ⚔️
+〉 10 خشب
+〉 15 حديد
 ▧ Fishingrod 🎣
-*❏ RECIPE*
-▧ Pickaxe ⛏️
-〉 10 Wood
-〉 5 Rock
-〉 5 Iron
-〉 20 String
-▧ Sword ⚔️
-〉 10 wood
-〉 15 Iron
-▧ Fishingrod 🎣
-〉 10 wood
-〉 2 Iron
-〉 20 String
+〉 10 خشب
+〉 2 حديد
+〉 20 خيط
 ▧ Armor 🥼
-〉 30 Iron
-〉 1 Emerald
-〉 5 Diamond
-▧ Atm 💳
-〉3 Emerald
-〉6 Diamond
-〉10k Money
+〉 30 حديد
+〉 1 زمرّد
+〉 5 ألماس
+▧ بطاقة بنكية 💳
+〉3 زمرّد
+〉6 ألماس
+〉10k نقود
 `
 
   try {
-    if (/craft|Crafting/i.test(command)) {
+    if (/صنع|صناعة/i.test(command)) {
       const count = args[1] && args[1].length > 0 ? Math.min(99999999, Math.max(parseInt(args[1]), 1)) : !args[1] || args.length < 3 ? 1 : Math.min(1, count)
         switch (type) {
-          case 'pickaxe':
-          if (user.pickaxe > 0) return m.reply('You already have this')
-            if(user.rock < 5 || user.wood < 10 || user.iron < 5 || user.string < 20) return conn.sendMessage(m.chat, { text: `Not enough goods!\nTo make a pickaxe. you need : \n10 wood🪵 \n5 iron⛓\n20 String🕸️\n5 rock1 🪨`, quoted: m, contextInfo: { mentionedJid: [m.sender] } })
+          case 'معول':
+          if (user.pickaxe > 0) return m.reply('عندك معول!')
+            if(user.rock < 5 || user.wood < 10 || user.iron < 5 || user.string < 20) return conn.sendMessage(m.chat, { text: `ماعندك موارد😬!\nعشان تصنع معول تحتاج : \n10 خشب🪵 \n5 حديد⛓\n20 خيط🕸️\n5 حجر 🪨`, quoted: m, contextInfo: { mentionedJid: [m.sender] } })
             global.db.data.users[m.sender].wood -= 10
             global.db.data.users[m.sender].iron -= 5
             user.rock -= 5
             global.db.data.users[m.sender].string -= 20
             global.db.data.users[m.sender].pickaxe += 1
             user.pickaxedurability = 40
-            conn.sendMessage(m.chat, { text: "Sucess making 1 pickaxe 🔨", quoted: m, contextInfo: { mentionedJid: [m.sender] } })
+            conn.sendMessage(m.chat, { text: "تمت صناعة المعول 🔨", quoted: m, contextInfo: { mentionedJid: [m.sender] } })
             break
-          case 'sword':
-          if (user.sword > 0) return m.reply(' You already have this')
-            if(user.wood < 10 || user.iron < 15) return conn.sendMessage(m.chat, { text: `Not enough goods!\nTo make swords. you need :\n10 Wood🪵\n15 iron⛓️`, quoted: m, contextInfo: { mentionedJid: [m.sender] } })
+          case 'سيف':
+          if (user.sword > 0) return m.reply(' عندك سيف!')
+            if(user.wood < 10 || user.iron < 15) return conn.sendMessage(m.chat, { text: `ماعندك موارد كافية!\nعشان تصنع لك سيف تحتاج :\n10 خشب🪵\n15 حديد⛓️`, quoted: m, contextInfo: { mentionedJid: [m.sender] } })
             global.db.data.users[m.sender].wood -= 10
             global.db.data.users[m.sender].iron -= 15
             global.db.data.users[m.sender].sword += 1
             user.sworddurability = 40
-            conn.sendMessage(m.chat, { text: "Sucess making 1 sword 🗡️", quoted: m, contextInfo: { mentionedJid: [m.sender] } })
+            conn.sendMessage(m.chat, { text: "تمت صناعة السيف🗡️", quoted: m, contextInfo: { mentionedJid: [m.sender] } })
             break
-          case 'fishingrod':
-          if (user.fishingrod > 0) return m.reply('You already have this')
-            if(user.wood < 20 || user.iron < 5 || user.string < 20) return conn.sendMessage(m.chat, { text: `Not enough goods!\nTo make a fishing rod. you need :\n10 wood🪵\n5 iron⛓\n20 String🕸️`, quoted: m, contextInfo: { mentionedJid: [m.sender] } })
+          case 'سنارة':
+          if (user.fishingrod > 0) return m.reply('عندك سنارة !')
+            if(user.wood < 20 || user.iron < 5 || user.string < 20) return conn.sendMessage(m.chat, { text: `ماعندك موارد كافية!\nعشان تصنع سنارة تحتاج :\n10 خشب🪵\n5 حديد⛓\n20 خيط🕸️`, quoted: m, contextInfo: { mentionedJid: [m.sender] } })
             global.db.data.users[m.sender].wood -= 10
             global.db.data.users[m.sender].iron -= 2
             global.db.data.users[m.sender].string -= 20
             global.db.data.users[m.sender].fishingrod += 1
             user.fishingroddurability = 40
-            conn.sendMessage(m.chat, { text: "Sucess making 1 fishing rod 🎣", quoted: m, contextInfo: { mentionedJid: [m.sender] } })
+            conn.sendMessage(m.chat, { text: "تمت صناعة السنارة 🎣", quoted: m, contextInfo: { mentionedJid: [m.sender] } })
             break
-          case 'armor':
-          if (user.armor > 0) return m.reply(' already have this')
-            if(user.iron < 15 || user.emerald < 1 || user.diamond < 5) return conn.sendMessage(m.chat, { text: `Not enough goods!\nto make armor. you need :\n30 Iron ⛓️\n1 Emerald ❇️\n5 Diamond 💎`, quoted: m, contextInfo: { mentionedJid: [m.sender] } })
+          case 'درع':
+          if (user.armor > 0) return m.reply(' عندك درع!')
+            if(user.iron < 15 || user.emerald < 1 || user.diamond < 5) return conn.sendMessage(m.chat, { text: `ماعندك موارد كافية!\nعشان تصنع درع تحتاج :\n30 حديد ⛓️\n1 زمرّد ❇️\n5 ألماس 💎`, quoted: m, contextInfo: { mentionedJid: [m.sender] } })
             global.db.data.users[m.sender].emerald -= 1
             global.db.data.users[m.sender].iron -= 15
             global.db.data.users[m.sender].diamond -= 5
             global.db.data.users[m.sender].armor += 1
             user.armordurability = 50
-            conn.sendMessage(m.chat, { text: "Sucess making 1 Armor 🥼", quoted: m, contextInfo: { mentionedJid: [m.sender] } })
+            conn.sendMessage(m.chat, { text: "تمت صناعة الدرع 🥼", quoted: m, contextInfo: { mentionedJid: [m.sender] } })
             break
-            case 'atm':
-          if (user.atm > 0) return m.reply('you already have this')
-            if(user.emerald < 3 || user.money < 10000 || user.diamond < 6) return conn.sendMessage(m.chat, { text: `not enough goods!\nto make  atm.you need  :\n10k Money 💹\n3 Emerald ❇️\n6 Diamond 💎`, quoted: m, contextInfo: { mentionedJid: [m.sender] } })
+            case 'بطاقة':
+          if (user.atm > 0) return m.reply('عندك بطاقة!')
+            if(user.emerald < 3 || user.money < 10000 || user.diamond < 6) return conn.sendMessage(m.chat, { text: `ماعندك موارد كافية!\nصناعة البطاقة البنكيه يبيلها :\n10k نقود 💹\n3 زمرّد ❇️\n6 ألماس 💎`, quoted: m, contextInfo: { mentionedJid: [m.sender] } })
             global.db.data.users[m.sender].emerald -= 3
             global.db.data.users[m.sender].money -= 10000
             global.db.data.users[m.sender].diamond -= 6
             global.db.data.users[m.sender].atm += 1
-            conn.sendMessage(m.chat, { text: "Sucess making 1 atm 💳", quoted: m, contextInfo: { mentionedJid: [m.sender] } })
+            conn.sendMessage(m.chat, { text: "تمت صناعة البطاقة 💳", quoted: m, contextInfo: { mentionedJid: [m.sender] } })
             break
             default:
             return conn.sendMessage(m.chat, { text: lgocraft + caption, quoted: m, contextInfo: { mentionedJid: [m.sender] } })
         }
       }
   } catch (e) {
-    conn.reply(m.chat, 'Sorry, there was an error running the command!', m)
+    conn.reply(m.chat, 'فيه خطأ بالأمر، تأكد من كتابته صح!', m)
     if (DevMode) {
       m.reply(`*Error:* ${util.format(e)}`)
     }
   }
 }
 handler.help = ['crafting']
-handler.tags = ['rpg']
-handler.command = /^(craft)$/i
+handler.tags = ['ترفيه']
+handler.command = /^(صناعة)$/i
 
 
 export default handler
