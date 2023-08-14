@@ -9,7 +9,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 	 let who
     if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : false
     else who = m.chat
-    if (!who) throw `✳️ Tag or mention someone\n\n📌 Example : ${usedPrefix + command} @tag` 
+    if (!who) throw `✳️منشن او رد على شخص\n\n📌 مثال : ${usedPrefix + command} @منشن` 
     
     let user = global.db.data.users[who]
     let name = conn.getName(who) 
@@ -26,10 +26,10 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
    
 }
 
-handler.help = ['kill @tag']
-handler.tags = ['rnime']
-handler.command = /^(kill|matar)$/i
-handler.diamond = true
+handler.help = ['قتل @منشن']
+handler.tags = ['رياكشن']
+handler.command = /^(قتل|kill)$/i
+handler.diamond = false
 handler.group = true
 
 export default handler
