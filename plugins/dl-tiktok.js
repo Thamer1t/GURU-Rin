@@ -1,4 +1,4 @@
-import { tiktokdl } from '@bochilteam/scraper';
+/*import { tiktokdl } from '@bochilteam/scraper';
 
 let handler = async (m, { conn, text, args, usedPrefix, command }) => {
   if (!args[0]) throw `✳️ Enter a TikTok link\n\n📌 Example: ${usedPrefix + command} https://vm.tiktok.com/ZMYG92bUh/`;
@@ -29,3 +29,4 @@ handler.command = /^(tiktok|ttdl|tiktokdl|tiktoknowm)$/i;
 
 
 export default handler;
+*/
