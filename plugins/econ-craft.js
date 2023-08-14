@@ -105,7 +105,7 @@ let lgocraft = `
   }
 }
 handler.help = ['crafting']
-handler.tags = ['ترفيه']
+handler.tags = ['ار بي جي']
 handler.command = /^(صناعة)$/i
 
 
