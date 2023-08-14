@@ -14,12 +14,12 @@ const cooldown = 86400000
 let handler = async (m,{ conn}, usedPrefix ) => {
   let user = global.db.data.users[m.sender]
   if (user.health < 80) return m.reply(`
-Requires at least 80 ❤️Healths for the mining!!
-please buy ❤️Healths first by typing * .buy potion <quantity>*,
-and type * .heal <quantity>* to use potions
+صحتك لازم تكون 80 ❤️عالأقل قبل التعدين!!
+زود صحتك اول عن طريق كتابة الامر * .شراء جرعة <عدد الجرعات>*,
+بعدها اكتب* .علاج <عدد الجرعات>* 
 `.trim())
   //if (user.pickaxe == 0) return m.reply('for mining u need a picaxe 🗿')
-  if (new Date - user.lastclaim < cooldown) throw `You alrady mining!, wait for *${((user.lastclaim + cooldown) - new Date()).toTimeString()}*`
+  if (new Date - user.lastclaim < cooldown) throw `توك معدّن!, انتظر *${((user.lastclaim + cooldown) - new Date()).toTimeString()}*`
   let text = ''
   for (let reward of Object.keys(rewards)) {
     if (!(reward in user)) continue
@@ -28,15 +28,15 @@ and type * .heal <quantity>* to use potions
   }
   //conn.sendButton(m.chat,'*––––––『 MINE 』––––––*', text.trim(), null, [['Adventure', '.adventure'], ['Weekly', '.weekly']],m)
   m.reply(`
-  🎁 *YOU WENT ON MINING *
+  🎁 *ذهبت للتعدين *
   
-  ▢ *AND GOT:*
+  ▢ *وحصلت على:*
    ${text}`)
   user.lastclaim = new Date * 1
 }
 handler.help = ['mine', 'mining']
-handler.tags = ['xp']
-handler.command = /^(mine|mining)$/i
+handler.tags = ['ار بي جي']
+handler.command = /^(تعدين|mining)$/i
 
 handler.cooldown = cooldown
 
@@ -54,5 +54,5 @@ function msToTime(duration) {
   minutes = (minutes < 10) ? "0" + minutes : minutes
   seconds = (seconds < 10) ? "0" + seconds : seconds
 
-  return hours + " Horas " + minutes + " Minutos"
+  return hours + " ساعة " + minutes + " دقيقة"
 }
