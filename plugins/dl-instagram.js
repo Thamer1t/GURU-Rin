@@ -1,14 +1,14 @@
 import fetch from 'node-fetch';
 
 let handler = async (m, { conn, usedPrefix, args, command, text }) => {
-  if (!text) throw `LINK?`;
+  if (!text) throw `رابط البوست ؟`;
   m.reply(wait);
 
   let res;
   try {
     res = await fetch(`https://inrl-web.onrender.com/api/insta?url=${text}`);
   } catch (error) {
-    throw `An error occurred: ${error.message}`;
+    throw `حدث خطأ: ${error.message}`;
   }
 
   let api_response = await res.json();
@@ -16,13 +16,13 @@ let handler = async (m, { conn, usedPrefix, args, command, text }) => {
     throw `No video found or Invalid response from API.`;
   }
 
-  let cap = `HERE IS THE VIDEO >,<`;
+  let cap = `تفضل مقطعك 🫡 >,<`;
 
   conn.sendFile(m.chat, api_response.result[0], 'instagram.mp4', cap, m);
 }
 
 handler.help = ['instagram']
-handler.tags = ['downloader']
-handler.command = /^(instagram|igdl|ig|instagramdl)$/i
+handler.tags = ['تحميل']
+handler.command = /^(انستا|igdl|ig|instagramdl)$/i
 
 export default handler
