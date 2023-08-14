@@ -1,4 +1,4 @@
-import fg from 'api-dylux';
+/*import fg from 'api-dylux';
 
 const handler = async (m, { conn, args, usedPrefix, command }) => {
   if (!args[0]) {
@@ -38,3 +38,4 @@ handler.diamond = true;
 
 export default handler;
 
+*/
