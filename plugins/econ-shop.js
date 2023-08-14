@@ -85,7 +85,7 @@ ${Object.keys(listItems).map((v) => {
 }
 
 handler.help = ['buy', 'sell'].map(v => v + ' [item] [count]')
-handler.tags = ['rpg']
+handler.tags = ['ار بي جي']
 handler.command = /^(شراء|بيع)$/i
 
 handler.disabled = false
