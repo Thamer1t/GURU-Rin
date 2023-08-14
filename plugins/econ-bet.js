@@ -1,4 +1,4 @@
-let confirm = {}
+/*let confirm = {}
 
 async function handler(m, { conn, args }) {
   // Check if the user is already in a gamble.
@@ -114,3 +114,4 @@ function number(x = 0) {
   x = parseInt(x)
   return !isNaN(x) && typeof x == 'number'
 }
+*/
