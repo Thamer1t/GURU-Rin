@@ -704,8 +704,8 @@ ${P}
   return 
 }
 
-handler.help = ['dungeon'].map(v => v + ' [custom room name]')
-handler.tags = ['ترفيه']
+handler.help = ['زنزانة'].map(v => v + ' [اسم الغرفة]')
+handler.tags = ['ار بي جي']
 handler.command = /^(زنزانة)$/i
 handler.level = 0
 
