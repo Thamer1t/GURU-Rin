@@ -4,29 +4,33 @@ const rewards = {
     potion: 10,
     mythic: 3,
     legendary: 1
-}
+};
 
-const cooldown = 2592000000
+const cooldown = 2592000000;
 let handler = async (m) => {
-    let user = global.db.data.users[m.sender]
-    if (new Date - user.lastmonthly < cooldown) throw `You have already claimed this monthly claim, wait for *${((user.lastmonthly + cooldown) - new Date()).toTimeString()}*`
-    let text = ''
-    for (let reward of Object.keys(rewards)) if (reward in user) {
-        user[reward] += rewards[reward]
-        text += `*+${rewards[reward]}* ${rpg.emoticon(reward)}${reward}\n`
+    let user = global.db.data.users[m.sender];
+    if (new Date() - user.lastmonthly < cooldown) {
+        throw `لقد استلمت هذا المطالبة الشهرية بالفعل ، انتظر حتى *${((user.lastmonthly + cooldown) - new Date()).toTimeString()}*`;
     }
-    //conn.sendButton(m.chat,'*––––––『 MONTHLY 』––––––*', text.trim(), null, [['Inventory', '.inv'], ['Menu', '.menu']],m)
+    let text = '';
+    for (let reward of Object.keys(rewards)) {
+        if (reward in user) {
+            user[reward] += rewards[reward];
+            text += `*+${rewards[reward]}* ${rpg.emoticon(reward)}${reward}\n`;
+        }
+    }
+    // conn.sendButton(m.chat, '*––––––『 MONTHLY 』––––––*', text.trim(), null, [['Inventory', '.inv'], ['Menu', '.menu']], m)
     m.reply(`
-    🎁 *الجائزة الشهرية*
+    🎁 *المكافأة الشهرية*
     
-    ▢ *استلمت:*
-     ${text}`)
-    user.lastmonthly = new Date * 1
-}
-handler.help = ['monthly']
-handler.tags = ['اقتصاد']
-handler.command = /^(شهري)$/i
+    ▢ *تم الاستلام:*
+     ${text}`);
+    user.lastmonthly = new Date() * 1;
+};
+handler.help = ['شهري'];
+handler.tags = ['rpg'];
+handler.command = /^(شهري)$/i;
 
-handler.cooldown = cooldown
+handler.cooldown = cooldown;
 
-export default handler
+export default handler;
