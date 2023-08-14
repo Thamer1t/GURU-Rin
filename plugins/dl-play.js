@@ -8,21 +8,18 @@ import os from 'os';
 const streamPipeline = promisify(pipeline);
 
 var handler = async (m, { conn, command, text, usedPrefix }) => {
-  if (!text) throw `Use example ${usedPrefix}${command} naruto blue bird`;
+  if (!text) throw `مثال ${usedPrefix}${command} ناروتو بلو بيرد`;
   await m.react(rwait);
 
   let search = await yts(text);
   let vid = search.videos[Math.floor(Math.random() * search.videos.length)];
-  if (!search) throw 'Video Not Found, Try Another Title';
+  if (!search) throw 'ماحصلت اللي تبي، جرب اسم ثاني';
   let { title, thumbnail, timestamp, views, ago, url } = vid;
-  let wm = 'Downloading audio please wait';
+  let wm = 'ثواني بس احمله لك 🤌🏻 ';
 
-  let captvid = `✼ ••๑⋯ ❀ Y O U T U B E ❀ ⋯⋅๑•• ✼
-  ❏ Title: ${title}
-  ❐ Duration: ${timestamp}
-  ❑ Views: ${views}
-  ❒ Upload: ${ago}
-  ❒ Link: ${url}
+  let captvid = `✼ ••๑⋯ ❀ R I N ❀ ⋯⋅๑•• ✼
+  ❏ العنوان: ${title}
+  ❐ المدة: ${timestamp}
 ⊱─━━━━⊱༻●༺⊰━━━━─⊰`;
 
   conn.sendMessage(m.chat, { image: { url: thumbnail }, caption: captvid, footer: author }, { quoted: m });
@@ -74,8 +71,8 @@ var handler = async (m, { conn, command, text, usedPrefix }) => {
 };
 
 handler.help = ['play'].map((v) => v + ' <query>');
-handler.tags = ['downloader'];
-handler.command = /^play$/i;
+handler.tags = ['تحميل'];
+handler.command = /^شغل/i;
 
 handler.exp = 0;
 handler.diamond = false;
