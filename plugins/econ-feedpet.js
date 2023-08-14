@@ -116,7 +116,7 @@ let pesan = pickRandom(['^_^', ' ^-^', '...', 'ᴜ~u', ' ^-^'])
     }
 }
 handler.help = ['اطعام [pet type]']
-handler.tags = ['rpg']
+handler.tags = ['ار بي جي']
 handler.command = /^(اطعام(ing)?)$/i
 
 export default handler
