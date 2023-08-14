@@ -1,4 +1,4 @@
-
+/*
 let handler = async (m, { conn}) => {
 let user = global.db.data.users[m.sender]
 let name = conn.getName(m.sender)
@@ -17,3 +17,4 @@ export default handler
 function pickRandom(list) {
   return list[Math.floor(list.length * Math.random())]
 }
+*/
