@@ -1,4 +1,4 @@
-
+/*
 import fg from 'api-dylux'
 let handler = async (m, { conn, text, args }) => {
 	
@@ -21,3 +21,4 @@ handler.tags = ['dl']
 handler.command = /^t(tstalk|iktokstalk)$/i
 
 export default handler
+*/
