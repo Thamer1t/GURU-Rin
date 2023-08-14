@@ -1,4 +1,4 @@
-import fetch from 'node-fetch'
+/*import fetch from 'node-fetch'
 import { sticker } from '../lib/sticker.js'
 //import db from '../lib/database.js'
 
@@ -31,3 +31,4 @@ handler.diamond = true
 handler.group = true
 
 export default handler
+*/
