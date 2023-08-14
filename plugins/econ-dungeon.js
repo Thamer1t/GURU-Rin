@@ -13,14 +13,14 @@ let handler = async(m, { conn, usedPrefix, command, text }) => {
         const buttons = []
 
         console.log({SWORD, ARMOR, HEALT})
-        if (SWORD) buttons.push({buttonId: `.craft sword`, buttonText: {displayText: 'ᴄʀᴀғᴛ sᴡᴏʀᴅ'}, type: 1})
-        if (ARMOR) buttons.push({buttonId: `.craft armor`, buttonText: {displayText: 'ᴄʀᴀғᴛ ᴀʀᴍᴏʀ'}, type: 1})
-        if (HEALT) buttons.push({buttonId: `.heal`, buttonText: {displayText: 'ʜᴇᴀʟ'}, type: 1})
+        if (SWORD) buttons.push({buttonId: `.صناعة سيف`, buttonText: {displayText: 'صناعة سيف'}, type: 1})
+        if (ARMOR) buttons.push({buttonId: `.صناعة درع`, buttonText: {displayText: 'صناعة درع'}, type: 1})
+        if (HEALT) buttons.push({buttonId: `.علاج`, buttonText: {displayText: 'علاج'}, type: 1})
         
         let lmao = item(user.sword * 1, user.armor * 1, user.health * 1, usedPrefix)
         if (buttons.length == 0) return m.reply(lmao)   
         const buttonMessage = {
-            contentText: `*${htki} DUNGEON ${htka}*`,
+            contentText: `*${htki} زنزانة ${htka}*`,
             footerText: lmao,
             buttons: buttons,
             headerType: 1
@@ -28,10 +28,10 @@ let handler = async(m, { conn, usedPrefix, command, text }) => {
         return conn.reply(m.chat, lmao, false, { quoted: m} )
     }
     global.dungeon = global.dungeon ? global.dungeon : {}
-    if (Object.values(global.dungeon).find(room => room.id.startsWith('dungeon') && [room.game.player1, room.game.player2, room.game.player3, room.game.player4].includes(m.sender))) return m.reply('You are still in the Dungeon') // nek iseh neng njero dungeon
+    if (Object.values(global.dungeon).find(room => room.id.startsWith('زنزانة') && [room.game.player1, room.game.player2, room.game.player3, room.game.player4].includes(m.sender))) return m.reply('لازلتم في الزنزانة') // nek iseh neng njero dungeon
     let timing = (new Date - (user.lastdungeon * 1)) * 1
-    if (timing < 600000) return conn.sendButton(m.chat, `*${htki} COOLDOWN ${htka}*`, `ʏᴏᴜ ʜᴀᴠᴇ ɢᴏɴᴇ ᴛᴏ ᴛʜᴇ ᴅᴜɴɢᴇᴏɴ, please wait...\n➞ ${clockString(600000 - timing)}`, null, [['WAIT', '']],m) // Cooldown
-    let room = Object.values(global.dungeon).find(room => room.state === 'WAITING' && (text ? room.name === text : true))
+    if (timing < 600000) return conn.sendButton(m.chat, `*${htki} وقت راحة ${htka}*`, `لقد ذهبتم الى الزنزانة, انتظروا شوي...\n➞ ${clockString(600000 - timing)}`, null, [['انتظر', '']],m) // Cooldown
+    let room = Object.values(global.dungeon).find(room => room.state === 'بالانتظار' && (text ? room.name === text : true))
     if (room) {
 
       // Biar simple :v
@@ -53,16 +53,16 @@ let handler = async(m, { conn, usedPrefix, command, text }) => {
       } else if (!p4) {
         room.player4 = m.chat
         room.game.player4 = m.sender
-        room.state = 'PLAYING'
+        room.state = 'تُلعب'
       }
         
        const buttons = [
-           {buttonId: 'id1', buttonText: {displayText: 'send'}, type: 1}
+           {buttonId: 'id1', buttonText: {displayText: 'ارسل'}, type: 1}
        ]
         
-        let lmao = `${!room.game.player4 ? `[• • •] ᴡᴀɪᴛɪɴɢ ${!room.game.player3 && !room.game.player4 ? '2' : '1'} ᴘʟᴀʏᴇʀ ᴀɢᴀɪɴ... ${room.name ? `\n➞ ᴛʏᴘᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ғᴏʀ ᴊᴏɪɴ *${usedPrefix}${command} ${room.name}*` : ''}` : 'ᴀʟʟ ᴘʟᴀʏᴇʀ ᴀʀᴇ ᴄᴏᴍᴘʟᴀᴛᴇ...'}`
+        let lmao = `${!room.game.player4 ? `[• • •] انتظار ${!room.game.player3 && !room.game.player4 ? '2' : '1'} انتظار لاعب اخر... ${room.name ? `\n➞ اكتب هذا الأمر للانضمام لغزو الزنزانة*${usedPrefix}${command} ${room.name}*` : ''}` : 'اكتمل عدد اللاعبين...'}`
         const buttonMessage = {
-            contentText: `DUNGEON`,
+            contentText: `زنزانة`,
             footerText: lmao,
             buttons: buttons,
             headerType: 1
@@ -85,8 +85,8 @@ let handler = async(m, { conn, usedPrefix, command, text }) => {
         room.game.uncommon += (pickRandom([0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0])) * 1
 
         let str = `
-➞ *ʀᴏᴏᴍ ɪᴅ:* ${room.id}
-👩‍🏫 *ᴘʟᴀʏᴇʀs:*
+➞ *رمز الغرفة:* ${room.id}
+👩‍🏫 *اللاعبين:*
 ▸ ${M(p1)}
 ▸ ${M(p2)}
 ▸ ${M(p3)}
@@ -119,18 +119,18 @@ let handler = async(m, { conn, usedPrefix, command, text }) => {
           let { health, sword } = room.less
           let { exp, money, sampah, potion, diamond, iron, kayu, batu, string, common, uncommon, mythic, legendary, pet, petFood } = room.price  
           let str2 = `
-👩‍🏫 *ᴘʟᴀʏᴇʀs:*
+👩‍🏫 *اللاعبين:*
 • *${M(p1)}*
 • *${M(p2)}*
 • *${M(p3)}*
 • *${M(p4)}* 
 - - - - - - - - - - - -
-*ʜᴇᴀʟᴛʜ:* -${health * 1}
-*ᴅᴜʀᴀʙɪʟɪᴛʏ sᴡᴏʀᴅ:* -${sword * 1} 
-*- ʀ ᴇ ᴡ ᴀ ʀ ᴅ -*
-*➞ ᴇxᴘ:* ${exp * 4}
-*➞ ᴍᴏɴᴇʏ:* ${money * 4}
-*➞ ᴛʀᴀsʜ:* ${sampah  * 4}${potion == 0 ? '' : '\n*➞ ᴘᴏᴛɪᴏɴ:* ' + potion * 4}${petFood == 0 ? '' : '\n*➞ ғᴏᴏᴅᴘᴇᴛ:* ' + petFood * 4}${kayu == 0 ? '' : '\n*➞ ᴡᴏᴏᴅ:* ' + kayu * 4}${batu == 0 ? '' : '\n*➞ sᴛᴏɴᴇ:* ' + batu * 4}${string == 0 ? '' : '\n*➞ sᴛʀɪɴɢ:* ' + string * 4}${iron == 0 ? '' : '\n*➞ ɪʀᴏɴ:* ' + iron * 4}${diamond == 0 ? '' : '\n*➞ ᴅɪᴀᴍᴏɴᴅ:* ' + diamond * 4}${common == 0 ? '' : '\n*➞ ᴄᴏᴍᴍᴏɴ:* ' + common * 4}${uncommon == 0 ? '' : '\n*➞ ᴜɴᴄᴏᴍᴍᴏɴ:* ' + uncommon * 4}
+*الصحة:* -${health * 1}
+*متانة السيف:* -${sword * 1} 
+*- المكافآت -*
+*➞ نقاط الخبرة:* ${exp * 4}
+*➞ النقود:* ${money * 4}
+*➞ زوائد:* ${sampah  * 4}${potion == 0 ? '' : '\n*➞ جرعات:* ' + potion * 4}${petFood == 0 ? '' : '\n*➞ طعام حيوانات:* ' + petFood * 4}${kayu == 0 ? '' : '\n*➞ خشب:* ' + kayu * 4}${batu == 0 ? '' : '\n*➞ حجر:* ' + batu * 4}${string == 0 ? '' : '\n*➞ خيوط:* ' + string * 4}${iron == 0 ? '' : '\n*➞ حديد:* ' + iron * 4}${diamond == 0 ? '' : '\n*➞ ألماس:* ' + diamond * 4}${common == 0 ? '' : '\n*➞ عنصر شائع:* ' + common * 4}${uncommon == 0 ? '' : '\n*➞ عنصر غير شائع:* ' + uncommon * 4}
              `.trim()
           for (let i = 0; i < player.length; i++) {
             let p = player[i]
@@ -169,7 +169,7 @@ let handler = async(m, { conn, usedPrefix, command, text }) => {
     mediaUrl: fgyt,
     mediaType: 2,
     description: botname, 
-    title: '- ᴅ ᴜ ɴ ɢ ᴇ ᴏ ɴ -',
+    title: '- الزنزانة-',
     body: botname,
     thumbnail: await(await fetch('https://telegra.ph/file/1836eec6c22d949829474.jpg')).buffer(),
     sourceUrl: fgsc
@@ -192,7 +192,7 @@ let handler = async(m, { conn, usedPrefix, command, text }) => {
           })
 
           if (mythic > 0) {
-            let str3 = '🎉 *ᴄᴏɴɢʀᴀᴛs !* 🎉\n• ' + M(p1) + '\n• ' + M(p2) + '\n• ' + M(p3) + '\n• ' + M(p4) +'\nyou get as many Rare items as *' + mythic * 4 + '* ᴍʏᴛʜɪᴄ ᴄʀᴀᴛᴇs !'
+            let str3 = '🎉 *تهانينا !* 🎉\n• ' + M(p1) + '\n• ' + M(p2) + '\n• ' + M(p3) + '\n• ' + M(p4) +'\nحصلتم على عناصر شديدة الندرة *' + mythic * 4 + '* صندوق غامض !'
             await m.reply(str3, c1, {
               contextInfo: {
                 mentionedJid: conn.parseMention(str3)
@@ -216,7 +216,7 @@ let handler = async(m, { conn, usedPrefix, command, text }) => {
           }
 
           if (legendary > 0 || pet > 0) {
-            let str3 = (mythic > 0 ? 'ᴀɴᴅ ' : 'ᴄᴏɴɢʀᴀᴛs ' + M(p1) + '\n• ' + M(p2) + '\n• ' + M(p3) + '\n• ' + M(p4) + ' ʏᴏᴜ') + 'ɢᴇᴛ ᴀs ᴍᴀɴʏ ᴇᴘɪᴄ ɪᴛᴇᴍs ᴀs: ' + (pet > 0 && legendary > 0 ? `\n➞ *${legendary * 4}* ʟᴇɢᴇɴᴅᴀʀʏ ᴄʀᴀᴛᴇs\n➞ *${pet * 4}* ᴘᴇᴛ ᴛᴏᴋᴇɴ` : pet > 0 && legendary < 1 ? `\n➞ *${pet * 4}* ᴘᴇᴛ ᴛᴏᴋᴇɴ` : legendary > 0 && pet < 1 ? `\n➞ *${legendary * 4}* ʟᴇɢᴇɴᴅᴀʀʏ ᴄʀᴀᴛᴇ` : '')
+            let str3 = (mythic > 0 ? 'ᴀɴᴅ ' : 'تهانينا ' + M(p1) + '\n• ' + M(p2) + '\n• ' + M(p3) + '\n• ' + M(p4) + ' ʏᴏᴜ') + 'حصلتم على عناصر ملحمية: ' + (pet > 0 && legendary > 0 ? `\n➞ *${legendary * 4}* صندوق اسطوري\n➞ *${pet * 4}* عملة حيوان اليف` : pet > 0 && legendary < 1 ? `\n➞ *${pet * 4}* عملة حيوان اليف` : legendary > 0 && pet < 1 ? `\n➞ *${legendary * 4}* صندوق اسطوري` : '')
             await m.reply(str3, c1, {
               contextInfo: {
                 mentionedJid: conn.parseMention(str3)
@@ -276,7 +276,7 @@ let handler = async(m, { conn, usedPrefix, command, text }) => {
             let sH = data(SDM1L)
             let H = data(HEALT)
 
-            let str3 = `${((SDH || SDH.length > 0) || (SDM1L || SDM1L.length > 0)) ? `⚔️Sword ${((SDH || SDH.length > 0 ? sI + ' Dear, please craft ⚔️Sword back by typing *' + usedPrefix + 'craft sword*' : '') + (SDM1L || SDM1L.length > 0 ? (SDH || SDH.length > 0 ? ', Whereas ⚔️Sword ' : '') + sH + ' Destroyed, and Dropped *1* Level' : ''))}` : ''}${HEALT || HEALT.length > 0 ? `❤️Life ${H} When its finished, please fill in ❤️Life by typing ${usedPrefix}heal` : ''}`
+            let str3 = `${((SDH || SDH.length > 0) || (SDM1L || SDM1L.length > 0)) ? `⚔️سيف ${((SDH || SDH.length > 0 ? sI + ' رجاء اصنع سيف باستعمال الامر*' + usedPrefix + 'صناعة سيف*' : '') + (SDM1L || SDM1L.length > 0 ? (SDH || SDH.length > 0 ? ', حيث ان سيفك ⚔️ ' : '') + sH + ' تمسر, وسقط *1* مستوى' : ''))}` : ''}${HEALT || HEALT.length > 0 ? `❤️الصحة ${H} عندما تنتهي، رجاءا املأها باستخدام الامر ${usedPrefix}علاج` : ''}`
             await m.reply(str3, c1, {
               contextInfo: {
                 mentionedJid: conn.parseMention(str3)
@@ -346,8 +346,8 @@ let handler = async(m, { conn, usedPrefix, command, text }) => {
             {buttonId: 'id1', buttonText: {displayText: 'send'}, type: 1}
         ]
         
-        let lmao = '[ • • • ] ᴡᴀɪᴛɪɴɢ ᴘʟᴀʏᴇʀ ' + (text ? `ᴛʏᴘᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ
-*${usedPrefix}${command} ${text}*` : '') + '\nᴏʀ ᴛʏᴘᴇ *send* ᴛᴏ ᴘʟᴀʏ'
+        let lmao = '[ • • • ] بانتظار اللاعبين ' + (text ? `اكتب هذا الامر
+*${usedPrefix}${command} ${text}*` : '') + '\nاو اكتب*ارسال* للعب'
         const buttonMessage = {
             contentText: `*WAITING*`,
             footerText: lmao,
@@ -378,14 +378,14 @@ handler.before = function (m) {
     if (room.game.player3) PLAYER.push(room.game.player3)
     if (room.game.player4) PLAYER.push(room.game.player4)
     let P = data(PLAYER)
-    if (/^(sendsolo|dewean)$/i.test(m.text.toLowerCase())) {
+    if (/^(سولو|dewean)$/i.test(m.text.toLowerCase())) {
         const buttons = [
-            {buttonId: 'id1', buttonText: {displayText: 'send'}, type: 1}
+            {buttonId: 'id1', buttonText: {displayText: 'ارسل'}, type: 1}
         ]
         
-        let lmao = '! ʏᴏᴜ ᴄᴀɴᴛ ᴘʟᴀʏ sᴏʟᴏ ʙᴇᴄᴀᴜsᴇ ʏᴏᴜ ᴀʟʀᴇᴀᴅʏ ʜᴀᴠᴇ ᴀ ᴘᴀʀᴛɴᴇʀ\n➞ ᴘʟᴇᴀsᴇ ᴛʏᴘᴇ *send* ᴛᴏ ᴘʟᴀʏ ᴡɪᴛʜ ᴏᴛʜᴇʀ ᴘᴀʀᴛɴᴇʀs...'
+        let lmao = '! ماتقدر تلعب سولو لان معك اخوياء\n➞ اكتب*ارسل* عشان تلعب معهم...'
         const buttonMessage = {
-          contentText: `*INFO*`,
+          contentText: `*معلومات*`,
           footerText: lmao,
           buttons: buttons,
           headerType: 1
@@ -394,8 +394,8 @@ handler.before = function (m) {
       if (room.player2 || room.player3 || room.player4) return this.sendMessage(m.chat, buttonMessage, MessageType.buttonsMessage)
       room.state = 'PLAYING'
       let str = `
-*➞ ʀᴏᴏᴍ ɪᴅ:* ${room.id}
-*👩‍🏫 ᴘʟᴀʏᴇʀ:*
+*➞ رمز الغرفة:* ${room.id}
+*👩‍🏫 اللاعب:*
 ${P}
 `.trim()
       m.reply(str, room.player1, {
@@ -409,13 +409,13 @@ ${P}
         let { health, sword } = room.less
         let { exp, money, sampah, potion, diamond, iron, kayu, batu, string, common, uncommon, mythic, legendary, pet, petFood } = room.price  
         let str2 = `
-*• ʜᴇᴀʟᴛʜ:* -${health * 1}
-*• sᴡᴏʀᴅ ᴅᴜʀᴀʙɪʟɪᴛʏ:* -${sword * 1} 
+*• الصحة:* -${health * 1}
+*• متانة السيف:* -${sword * 1} 
 - - - - - - - - - - - - - - - - - 
-*- ʀ ᴇ ᴡ ᴀ ʀ ᴅ -*
-➞ *ᴇxᴘ:* ${exp}
-➞ *ᴍᴏɴᴇʏ:* ${money}
-➞ *ᴛʀᴀsʜ:* ${sampah}${potion == 0 ? '' : '\n*➞ ᴘᴏᴛɪᴏɴ:* ' + potion}${petFood == 0 ? '' : '\n*➞ ғᴏᴏᴅᴘᴇᴛ:* ' + petFood * 1}${kayu == 0 ? '' : '\n*➞ ᴡᴏᴏᴅ:* ' + kayu}${batu == 0 ? '' : '\n*➞ sᴛᴏɴᴇ:* ' + batu}${string == 0 ? '' : '\n➞ *sᴛʀɪɴɢ:* ' + string}${iron == 0 ? '' : '\n*➞ ɪʀᴏɴ:* ' + iron}${diamond == 0 ? '' : '\n*➞ ᴅɪᴀᴍᴏɴᴅ:* ' + diamond}${common == 0 ? '' : '\n*➞ ᴄᴏᴍᴍᴏɴ:* ' + common}${uncommon == 0 ? '' : '\n*➞ ᴜɴᴄᴏᴍᴍᴏɴ:* ' + uncommon}
+*- المكافآت -*
+➞ *نقاط الخبرة:* ${exp}
+➞ *النقود:* ${money}
+➞ *الزوائد:* ${sampah}${potion == 0 ? '' : '\n*➞ الجرعات:* ' + potion}${petFood == 0 ? '' : '\n*➞ طعام حيوانات:* ' + petFood * 1}${kayu == 0 ? '' : '\n*➞ خشب:* ' + kayu}${batu == 0 ? '' : '\n*➞ حجر:* ' + batu}${string == 0 ? '' : '\n➞ *خيوط:* ' + string}${iron == 0 ? '' : '\n*➞ حديد:* ' + iron}${diamond == 0 ? '' : '\n*➞ ألماس:* ' + diamond}${common == 0 ? '' : '\n*➞ عناصر شائعة:* ' + common}${uncommon == 0 ? '' : '\n*➞ عناصر غير شائعة:* ' + uncommon}
 `.trim()
         users.health -= health * 1
         users.sworddurability -= sword * 1
@@ -439,18 +439,18 @@ ${P}
     mediaUrl: fgyt,
     mediaType: 2,
     description: botname, 
-    title: '- ᴅ ᴜ ɴ ɢ ᴇ ᴏ ɴ -',
+    title: '- الزنزانة -',
     body: botname,
     thumbnail: await(await fetch('https://telegra.ph/file/1836eec6c22d949829474.jpg')).buffer(),
     sourceUrl: fgsc
      }}
   })
         if (mythic > 0) {
-          let str3 = '🎉 ᴄᴏɴɢʀᴀᴛs ʏᴏᴜ ɢᴏᴛ ᴀ ɪᴛᴇᴍs ʀᴀʀᴇ ᴛʜᴀᴛ ɪs *' + mythic + '* ᴍʏᴛʜɪᴄ ᴄʀᴀᴛᴇ'
+          let str3 = '🎉 تهانينا حصلت على عناصر نادرة *' + mythic + '* صندوق غامض'
           m.reply(str3, room.player1)
         }
         if (legendary > 0 || pet > 0) {
-          let str3 = (mythic > 0 ? 'ᴀɴᴅ' : 'ᴄᴏɴɢʀᴀᴛs') + ' ɢᴏᴛ ᴀ ɪᴛᴇᴍs ʀᴀʀᴇ ᴛʜᴀᴛ ɪs ' + (pet > 0 && legendary > 0 ? `*${legendary}* ʟᴇɢᴇɴᴅᴀʀʏ ᴄʀᴀᴛᴇs ᴀɴᴅ *${pet}* ᴘᴇᴛ ᴛᴏᴋᴇɴ` : pet > 0 && legendary < 1 ? `*${pet}* ᴘᴇᴛ ᴛᴏᴋᴇɴ` : legendary > 0 && pet < 1 ? `*${legendary}* ʟᴇɢᴇɴᴅᴀʀʏ ᴄʀᴀᴛᴇs` : '')
+          let str3 = (mythic > 0 ? 'و' : 'تهانينا') + ' حصلت على عناصر شديدة الندرة  ' + (pet > 0 && legendary > 0 ? `*${legendary}* صندوق اسطوري و *${pet}* عملة حيوان أليف` : pet > 0 && legendary < 1 ? `*${pet}* عملة حيوان أليف` : legendary > 0 && pet < 1 ? `*${legendary}* صندوق اسطوري` : '')
           m.reply(str3, room.player1)
         }
         if ((users.health * 1) < 1 || (users.sworddurability * 1) < 1) {
@@ -462,7 +462,7 @@ ${P}
             users[p1].sword -= 1
             users[p1].sworddurability = 0
           }
-          let str3 = `${__sword1 ? `➞ ʏᴏᴜʀ sᴡᴏʀᴅ ${_sword1 ? ` ᴛʜᴇ ʟᴇᴠᴇʟ ɪs ʀᴇᴅᴜᴄᴇᴅ ʙʏ 1 ᴅᴜᴇ ᴛᴏ ᴅᴇsᴛᴜᴄᴛɪᴏɴ` : ` ᴅᴇsᴛʀᴏʏᴇᴅ, ᴘʟᴇᴀsᴇ ᴄʀᴀғᴛ ᴀ sᴡᴏʀᴅ ᴀɢᴀɪɴ ʙʏ ᴛʏᴘɪɴɢ ${usedPrefix}`}craft sword` : ''} ${health1 ? `${__sword1 ? 'ᴀɴᴅ ' : ''}ʏᴏᴜʀ ʟɪғᴇ ɪs ᴏᴠᴇʀ, ᴘʟᴇᴀsᴇ ғɪʟʟ ᴀɢᴀɪɴ ʙʏ ᴛʏᴘɪɴɢ ${usedPrefix}heal` : ''}`
+          let str3 = `${__sword1 ? `➞ سيفك ${_sword1 ? ` تم خفض المستوى بمقدار 1 لأنه تدمر` : ` تدمر, قم بصناعة اخر عن طريق كتابة ${usedPrefix}`}صناعة سيف` : ''} ${health1 ? `${__sword1 ? 'و ' : ''}صحتك نفدت, اكتب ${usedPrefix}علاج` : ''}`
           m.reply(str3, room.player1, {
             contextInfo: {
               mentionedJid: this.parseMention(str3)
@@ -475,8 +475,8 @@ ${P}
 
     } else if (/^(s?s?s?s?.?.?.?|tart)$/i.test(m.text.toLowerCase())) {
         let str = `
-➞ *ʀᴏᴏᴍ ɪᴅ:* ${room.id}
-👩‍🏫 *ᴘʟᴀʏᴇʀ:*
+➞ *رمز الغرفة:* ${room.id}
+👩‍🏫 *اللاعب:*
 ${P}
 `.trim()
       m.reply(str, c1, {
@@ -516,15 +516,15 @@ ${P}
       let { exp, money, sampah, potion, diamond, iron, kayu, batu, string, common, uncommon, mythic, legendary, pet, petFood } = room.price
 
       setTimeout(async () => {
-        let str2 =`👩‍🏫 *ᴘʟᴀʏᴇʀs:*
+        let str2 =`👩‍🏫 *اللاعبين:*
 ${P}
-*ʜᴇᴀʟᴛʜ:* -${health * 1} 
-*sᴡᴏʀᴅ ᴅᴜʀᴀʙɪʟɪᴛʏ:* -${sword * 1} 
+*الصحة:* -${health * 1} 
+*متانة السيف:* -${sword * 1} 
 - - - - - - - - - - - - - - - - - -
-*- ʀ ᴇ ᴡ ᴀ ʀ ᴅ -*
-*➞ ᴇxᴘ:* ${exp * orang}
-*➞ ᴍᴏɴᴇʏ:* ${money * orang}
-*➞ ᴛʀᴀsʜ:* ${sampah  * orang}${potion == 0 ? '' : '\n*➞ ᴘᴏᴛɪᴏɴ:* ' + potion * orang}${petFood == 0 ? '' : '\n*➞ ғᴏᴏᴅᴘᴇᴛ:* ' + petFood * orang}${kayu == 0 ? '' : '\n*➞ ᴡᴏᴏᴅ:* ' + kayu * orang}${batu == 0 ? '' : '\n*➞ sᴛᴏɴᴇ:* ' + batu * orang}${string == 0 ? '' : '\n*➞ sᴛᴏɴᴇ:* ' + string * orang}${iron == 0 ? '' : '\n*➞ ɪʀᴏɴ:* ' + iron * orang}${diamond == 0 ? '' : '\n*➞ ᴅɪᴀᴍᴏɴᴅ:* ' + diamond * orang}${common == 0 ? '' : '\n*➞ ᴄᴏᴍᴍᴏɴ:* ' + common * orang}${uncommon == 0 ? '' : '\n*➞ ᴜɴᴄᴏᴍᴍᴏɴ:* ' + uncommon * orang}
+*- المكافآت -*
+*➞ نقاط الخبرة:* ${exp * orang}
+*➞ النقود:* ${money * orang}
+*➞ الزوائد:* ${sampah  * orang}${potion == 0 ? '' : '\n*➞ جرعات:* ' + potion * orang}${petFood == 0 ? '' : '\n*➞ طعام حيوانات:* ' + petFood * orang}${kayu == 0 ? '' : '\n*➞ خشب:* ' + kayu * orang}${batu == 0 ? '' : '\n*➞ حجر:* ' + batu * orang}${string == 0 ? '' : '\n*➞ خيوط:* ' + string * orang}${iron == 0 ? '' : '\n*➞ حديد:* ' + iron * orang}${diamond == 0 ? '' : '\n*➞ ألماس:* ' + diamond * orang}${common == 0 ? '' : '\n*➞ عناصر شائعة:* ' + common * orang}${uncommon == 0 ? '' : '\n*➞ عناصر غير شائعة:* ' + uncommon * orang}
 `.trim()
         await m.reply(str2, c1, {
           contextInfo: {
@@ -533,7 +533,7 @@ ${P}
     mediaUrl: fgyt,
     mediaType: 2,
     description: botname, 
-    title: '- ᴅ ᴜ ɴ ɢ ᴇ ᴏ ɴ -',
+    title: '- الزنزانة -',
     body: botname,
     thumbnail: await(await fetch('https://telegra.ph/file/1836eec6c22d949829474.jpg')).buffer(),
     sourceUrl: fgsc
@@ -587,7 +587,7 @@ ${P}
 
       // Nak entok item Rare
       if (mythic > 0) {
-        let str3 = '🎉 ᴄᴏɴɢʀᴀᴛs 🎉\n ' + P + '\nʏᴏᴜ ɢᴇᴛ ᴀs ᴍᴀɴʏ ʀᴀʀᴇ ɪᴛᴇᴍs ᴀs *' + mythic * orang + '* ᴍʏᴛʜɪᴄ ᴄʀᴀᴛᴇ'
+        let str3 = '🎉 تهانينا 🎉\n ' + P + '\nحصلت على عناصر نادرة *' + mythic * orang + '* صندوق غامض'
         m.reply(str3, c1, {
           contextInfo: {
             mentionedJid: this.parseMention(str3)
@@ -612,7 +612,7 @@ ${P}
 
       // Nak entok item Epic
       if (legendary > 0 || pet > 0) {
-        let str3 = (mythic > 0 ? 'ᴀɴᴅ' : 'ᴄᴏɴɢʀᴀᴛs ' + P + ' ʏᴏᴜ') + ' ɢᴇᴛ ᴀs ᴍᴀɴʏ ᴇᴘɪᴄ ɪᴛᴇᴍs ᴀs ' + (pet > 0 && legendary > 0 ? `*${legendary * orang}* ʟᴇɢᴇɴᴅᴀʀʏ ᴄʀᴀᴛᴇ ᴀɴᴅ *${pet * orang}* ᴘᴇᴛ ᴛᴏᴋᴇɴ` : pet > 0 && legendary < 1 ? `*${pet * orang}* ᴘᴇᴛ ᴛᴏᴋᴇɴ` : legendary > 0 && pet < 1 ? `*${legendary * orang}* ʟᴇɢᴇɴᴅᴀʀʏ ᴄʀᴀᴛᴇ` : '')
+        let str3 = (mythic > 0 ? 'و' : 'تهانينا ' + P + ' انت') + ' حصلت على عناصر ملحمية ' + (pet > 0 && legendary > 0 ? `*${legendary * orang}* صندوق اسطوري *${pet * orang}* عملة حيوان أليف` : pet > 0 && legendary < 1 ? `*${pet * orang}* عملة حيوان أليف` : legendary > 0 && pet < 1 ? `*${legendary * orang}* صندوق اسطوري` : '')
         m.reply(str3, c1, {
           contextInfo: {
             mentionedJid: this.parseMention(str3)
@@ -673,8 +673,8 @@ ${P}
         let sH = data(SDM1L)
         let H = data(HEALT)
 
-        let str3 = `${((SDH || SDH.length > 0) || (SDM1L || SDM1L.length > 0)) ? `⚔️Sword ${((SDH || SDH.length > 0 ? sI + ' Destroyed, please craft ⚔️Sword back by typing *' + usedPrefix + 'craft sword*' : '') + (SDM1L || SDM1L.length > 0 ? (SDH || SDH.length > 0 ? ', Whereas ⚔️Sword ' : '') + sH + ' Destroyed, and Dropped *1* Level' : ''))}` : ''}${HEALT || HEALT.length > 0 ? `❤️
-        life ${H} When its finished, please fill in ❤️Life by typing ${usedPrefix}heal` : ''}`
+        let str3 = `${((SDH || SDH.length > 0) || (SDM1L || SDM1L.length > 0)) ? `⚔️سيف ${((SDH || SDH.length > 0 ? sI + ' تحطم, رجاء اصنع ⚔️سيفا اخر عن طريق كتابة  *' + usedPrefix + 'صناعة سيف*' : '') + (SDM1L || SDM1L.length > 0 ? (SDH || SDH.length > 0 ? ', حيث ان  ⚔️ سيفك ' : '') + sH + ' تدمر, وانخفض مستواك ب 1 ' : ''))}` : ''}${HEALT || HEALT.length > 0 ? `❤️
+        صحتك ${H} عندما تنتهي اعد تعبئتها باستخدام الامر ${usedPrefix}علاج` : ''}`
         m.reply(str3, c1, {
           contextInfo: {
             mentionedJid: this.parseMention(str3)
@@ -705,8 +705,8 @@ ${P}
 }
 
 handler.help = ['dungeon'].map(v => v + ' [custom room name]')
-handler.tags = ['rpg']
-handler.command = /^(dungeon)$/i
+handler.tags = ['ترفيه']
+handler.command = /^(زنزانة)$/i
 handler.level = 0
 
 handler.mods = false
@@ -735,7 +735,7 @@ function item(sword, armor, health, usedPrefix) {
   let a = (armor * 1) < 1
   let h = (health * 1) < 90
   let str = `
-${sw ? '➞ ʏᴏᴜ ᴅᴏɴ\'ᴛ ʜᴀᴠᴇ ᴀ sᴡᴏʀᴅ ʏᴇᴛ' : ''}${sw && a && h ? ',' : sw && a ? ' ᴀɴᴅ ' : ''} ${a ? 'ᴀʀᴍᴏʀ !' : ''}${sw && a && h ? '\n➞ ʏᴏᴜʀ ʜᴇᴀʟᴛʜ ᴍᴜsᴛ ʙᴇ ᴀᴛ ʟᴇᴀsᴛ 90' : h ? '\n➞ ʏᴏᴜʀ ʜᴇᴀʟᴛʜ ᴍᴜsᴛ ʙᴇ ᴀᴛ ʟᴇᴀsᴛ 90' : ''}\n- - - - - - - - - - - - - - - \n${sw ? `\n「🗡️」• ᴛᴏ ɢᴇᴛ sᴡᴏʀᴅ, ᴛʏᴘᴇ: *${usedPrefix}craft sword*` : ''}${a ? `\n「🥼」• ᴛᴏ ɢᴇᴛ ᴀʀᴍᴏʀ, ᴛʏᴘᴇ: *${usedPrefix}craft armor*` : ''}${h ? `\n「❤️」• ᴛᴏ ɪɴᴄʀᴇᴀsᴇ, ᴛʏᴘᴇ: *${usedPrefix}heal*` : ''}
+${sw ? '➞ مامعك سيف للحين' : ''}${sw && a && h ? ',' : sw && a ? ' و ' : ''} ${a ? 'درع !' : ''}${sw && a && h ? '\n➞ صحتك لازم تكون فاق ال 90' : h ? '\n➞ صحتك لازم تكون فوق ال 90' : ''}\n- - - - - - - - - - - - - - - \n${sw ? `\n「🗡️」• عشان تسوي سيف، اكتب: *${usedPrefix}صناعة سيف*` : ''}${a ? `\n「🥼」• لتحصل على درع اكتب: *${usedPrefix}صناعة درع*` : ''}${h ? `\n「❤️」•لزيادة صحتك اكتب: *${usedPrefix}علاج*` : ''}
   `.trim()
   return str
 }
@@ -774,7 +774,7 @@ function data(DATA) {
     if (panjang == 1) msg += `*${M(player)}*` 
     else {
       if (DATA.indexOf(player) !== (panjang - 1)) msg += `*${M(player)}*, ` 
-      else msg += `ᴀɴᴅ *${M(player)}*`
+      else msg += `و *${M(player)}*`
     }
   })
   return msg
