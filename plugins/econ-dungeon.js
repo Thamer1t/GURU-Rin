@@ -53,7 +53,7 @@ let handler = async(m, { conn, usedPrefix, command, text }) => {
       } else if (!p4) {
         room.player4 = m.chat
         room.game.player4 = m.sender
-        room.state = 'تُلعب'
+        room.state = 'PLAYING'
       }
         
        const buttons = [
